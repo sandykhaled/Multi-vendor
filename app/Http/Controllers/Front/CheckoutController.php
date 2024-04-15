@@ -6,10 +6,12 @@ use App\Events\OrderCreated;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Notifications\OrderCreatedNotification;
 use App\Repositories\Cart\CartRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 use Nnjeim\World\Models\Country;
 
 class CheckoutController extends Controller
@@ -60,8 +62,8 @@ class CheckoutController extends Controller
             $cart->empty();
             DB::commit();
 //            event('order.created',$order, Auth::user());
-                event(new OrderCreated($order));
-
+//                event(new OrderCreated($order));
+Notification::send(Auth::user(),new OrderCreatedNotification($order));
 
             }catch (\Throwable $e){
             DB::rollBack();

@@ -10,9 +10,11 @@ let mix = require('laravel-mix');
  |
  */
 
+// Set environment variables
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/cart.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', []);
+mix.env(process.env.MIX_MY_VARIABLE);
 
 // // Other mix configurations...
 //
