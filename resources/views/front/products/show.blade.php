@@ -43,7 +43,7 @@
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
                             <h2 class="title">{{$product->name}}</h2>
-                            <p class="category"><i class="lni lni-tag"></i> Drones:<a href="javascript:void(0)">{{$product->category->name}}</a></p>
+                            <p class="category"><i class="lni lni-tag"></i> Drones:<a href="javascript:void(0)">{{$product->category_name}}</a></p>
                             <h3 class="price">{{Currency::format($product->price)}}
                                 @if($product->compare_price)
                                     <span>{{Currency::format($product->compare_price)}}</span>
